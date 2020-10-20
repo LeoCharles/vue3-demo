@@ -1,18 +1,28 @@
 <template>
-  <Timer />
-  <HelloBeauty />
+  <header class="header">
+    <NavBar />
+    <Timer />
+  </header>
+  <main class="main">
+    <HelloBeauty />
+    <HackerNews />
+  </main>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUpdated, onRenderTracked, onRenderTriggered } from 'vue'
+import NavBar from './components/NavBar.vue'
 import Timer from './components/Timer.vue'
 import HelloBeauty from './components/HelloBeauty.vue'
+import HackerNews from './components/HackerNews.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
+    NavBar,
     Timer,
     HelloBeauty,
+    HackerNews,
   },
   setup() {
   
@@ -26,11 +36,20 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  margin: 0 50px;
 }
 button {
   cursor: pointer;
+}
+a {
+  cursor: pointer;
+  color: #42b983;
 }
 </style>

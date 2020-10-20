@@ -19,8 +19,7 @@ export default defineComponent({
 
 <style scoped>
 .timer {
-  margin: 20px auto;
-  font-size: 20px;
+  font-size: 16px;
   color: #42b983;
 }
 </style>
