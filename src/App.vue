@@ -1,16 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <Timer />
+  <HelloBeauty />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref, onMounted, onUpdated, onRenderTracked, onRenderTriggered } from 'vue'
+import Timer from './components/Timer.vue'
+import HelloBeauty from './components/HelloBeauty.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    Timer,
+    HelloBeauty,
+  },
+  setup() {
+  
+    return {}
   }
 });
 </script>
@@ -22,6 +28,9 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
+}
+button {
+  cursor: pointer;
 }
 </style>
