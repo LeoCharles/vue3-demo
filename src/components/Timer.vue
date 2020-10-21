@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { nowTime, getNowTime } from '../hooks/useNowTime'
 
 export default defineComponent({

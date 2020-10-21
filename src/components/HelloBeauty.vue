@@ -3,16 +3,17 @@
     <p>
       <button @click="getBeauty" :disabled="loading">点击获取美女图片</button>
     </p>
-    <div v-if="loading">loading...</div>
-    <div v-if="imgSrc && !loading" class="img-box">
+    <div v-if="loading">Loading...</div>
+    <div v-else-if="error">Something went wrong...</div>
+    <div v-else class="img-box">
       <span class="del" @click="delImg" title="删除">X</span>
-      <img class="img" :src="imgSrc" alt="beauty">
+      <img class="img" v-if="imgSrc" :src="imgSrc" alt="beauty">
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import axios from 'axios'
 
 export default defineComponent({
@@ -21,16 +22,19 @@ export default defineComponent({
 
     const imgSrc = ref('')
     const loading = ref(false)
+    const error = ref(false)
     
     // 随机获取美女图片
     const getBeauty = () => {
       loading.value = true
+      error.value = false
 
       axios.get('https://uploadbeta.com/api/pictures/random/?key=推女郎', {
         responseType: 'arraybuffer' // 设置响应数据类型为二进制数组
       }).then(res => {
         loading.value = false
-        
+        error.value = false
+
         // 通过类型化数组来接收二进制数据
         const byteArray = new Uint8Array(res.data)
         
@@ -45,16 +49,18 @@ export default defineComponent({
         // 图片地址拼接为 base64 格式的 data URL
         imgSrc.value = 'data:image/png;base64,' + base64
 
-      }).catch(e => {
+      }).catch(() => {
         loading.value = false
+        error.value = true
       })
     }
 
     const delImg = () => imgSrc.value = ''
     
     return {
-      imgSrc,
       loading,
+      error,
+      imgSrc,
       getBeauty,
       delImg
     }

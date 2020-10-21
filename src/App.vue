@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUpdated, onRenderTracked, onRenderTriggered } from 'vue'
+import { defineComponent } from 'vue'
 import NavBar from './components/NavBar.vue'
 import Timer from './components/Timer.vue'
 import HelloBeauty from './components/HelloBeauty.vue'
