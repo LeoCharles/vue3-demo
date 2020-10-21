@@ -8,11 +8,13 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'Counter',
-  setup() {
+  props: {},
+  setup(props) {
+
     const count = ref(0)
 
     const addCount = () => {
@@ -22,13 +24,17 @@ export default {
       count.value--
     }
 
+    watch(count, (newVal, oldVal) => {
+      console.log('新值:' + count.value)
+    })
+
     return {
       count,
       addCount,
       minusCount
     }
   }
-}
+}) 
 </script>
 
 <style>

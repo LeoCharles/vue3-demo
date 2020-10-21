@@ -4,6 +4,7 @@
     <Timer />
   </header>
   <main class="main">
+    <Counter />
     <HelloBeauty />
     <HackerNews />
   </main>
@@ -13,6 +14,7 @@
 import { defineComponent } from 'vue'
 import NavBar from './components/NavBar.vue'
 import Timer from './components/Timer.vue'
+import Counter from './components/Counter.vue'
 import HelloBeauty from './components/HelloBeauty.vue'
 import HackerNews from './components/HackerNews.vue'
 
@@ -21,6 +23,7 @@ export default defineComponent({
   components: {
     NavBar,
     Timer,
+    Counter,
     HelloBeauty,
     HackerNews,
   },
