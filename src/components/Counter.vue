@@ -8,12 +8,16 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, watch, computed } from 'vue'
 
 export default defineComponent({
   name: 'Counter',
   props: {},
-  setup(props) {
+  setup(props, context) {
+    console.log(context.attrs)
+    console.log(context.slots)
+    console.log(context.slots)
+
 
     const count = ref(0)
 
@@ -25,7 +29,11 @@ export default defineComponent({
     }
 
     watch(count, (newVal, oldVal) => {
-      console.log('新值:' + count.value)
+      console.log('watch:', newVal, oldVal)
+    })
+
+    const twiceCount = computed(() => {
+      return count.value * 2
     })
 
     return {
